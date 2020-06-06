@@ -1,6 +1,6 @@
 <template>
 <div>
-    <h1>第二章 在网页中使用SVG</h1>
+    <h1>第2章 在网页中使用SVG</h1>
     <h2>2.1 将SVG作为图像</h2>
     SVG是种图像格式，可以把SVG嵌入到网页（当成图片包含在img元素，或者用在样式中）
     不过这两种方式在网页中的应用是有局限的
@@ -50,7 +50,7 @@
         &lt;foreignObject xmlns="内容类型"&gt;&lt;/foreignObject&gt; 元素定义了一个矩形区域，通过xmlns属性来定义其
     </pre>
     <code>
-        <svg>
+        <svg width="200" height="200" class="border">
             <g transform="skewX(25)">
                 <switch>
                     <!--选择第一个子元素-->
@@ -87,7 +87,7 @@
         &lt;/svg&gt;
     </pre>
     <code>
-        <svg class="c2_3_2">
+        <svg class="c2_3_2 border">
             <title>一个圆</title>
             <circle cx="90" cy="80" r="70" stroke="white" fill="white"></circle>
             <text x="55" y="85">这是个圆</text>
@@ -117,7 +117,6 @@
     display: block;
     width:200px;
     height:200px;
-    border: 1px solid white;
     background:gray;
     color:blue;
 

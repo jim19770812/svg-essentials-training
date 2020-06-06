@@ -1,6 +1,6 @@
 <template>
 <div>
-    <h1>第一章 入门指南</h1>
+    <h1>第1章 入门指南</h1>
     SVG是矢量图，是种XML脚本，可以展示图形
     <h2>1.1 图形系统</h2>
     <h3>1.1.1 珊格图形</h3>
@@ -53,7 +53,7 @@
 
     </pre>
     <code>
-        <svg width="140" height="170" xmlns="http://www.w3.org/2000/svg">
+        <svg width="140" height="170" class="border" xmlns="http://www.w3.org/2000/svg">
             <title>Cat</title>
             <desc>一只猫</desc>
             <!-- 画一个空心圆 -->
@@ -75,7 +75,7 @@
         &lt;/svg&gt;
     </pre>
     <code>
-        <svg width="140" height="170" xmlns="http://www.w3.org/2000/svg">
+        <svg width="140" height="170" class="border" xmlns="http://www.w3.org/2000/svg">
             <title>Cat</title>
             <desc>一只猫</desc>
             <!-- 画一个空心圆 -->
@@ -104,7 +104,7 @@
         &lt;/svg&gt;
     </pre>
     <code>
-        <svg width="140" height="170" xmlns="http://www.w3.org/2000/svg">
+        <svg width="140" height="170" class="border" xmlns="http://www.w3.org/2000/svg">
             <title>Cat</title>
             <desc>一只猫</desc>
             <!-- 画一个空心圆 -->
@@ -137,7 +137,7 @@
         &lt;/svg&gt;
     </pre>
     <code>
-        <svg width="140" height="170" xmlns="http://www.w3.org/2000/svg">
+        <svg width="140" height="170" class="border" xmlns="http://www.w3.org/2000/svg">
             <title>Cat</title>
             <desc>一只猫</desc>
             <!-- 画一个空心圆 -->
@@ -183,7 +183,7 @@
         &lt;/svg&gt;
     </pre>
     <code>
-        <svg width="140" height="170" xmlns="http://www.w3.org/2000/svg">
+        <svg width="140" height="170" class="border" xmlns="http://www.w3.org/2000/svg">
             <title>Cat</title>
             <desc>一只猫</desc>
             <!-- 画一个空心圆 -->
@@ -232,7 +232,7 @@
         &lt;/svg&gt;
     </pre>
     <code>
-        <svg width="140" height="170" xmlns="http://www.w3.org/2000/svg">
+        <svg width="140" height="170" class="border" xmlns="http://www.w3.org/2000/svg">
             <title>Cat</title>
             <desc>一只猫</desc>
             <!-- 画一个空心圆 -->
@@ -284,7 +284,7 @@
         &lt;/svg&gt;
     </pre>
     <code>
-        <svg width="140" height="170" xmlns="http://www.w3.org/2000/svg">
+        <svg width="140" height="170" class="border" xmlns="http://www.w3.org/2000/svg">
             <title>Cat</title>
             <desc>一只猫</desc>
             <!-- 画一个空心圆 -->

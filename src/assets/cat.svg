@@ -14,111 +14,23 @@
    id="svg203"
    sodipodi:docname="svg2_1_1_1.svg"
    inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
-  <metadata
-     id="metadata209">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title>Cat</dc:title>
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <defs
-     id="defs207" />
-  <sodipodi:namedview
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1"
-     objecttolerance="10"
-     gridtolerance="10"
-     guidetolerance="10"
-     inkscape:pageopacity="0"
-     inkscape:pageshadow="2"
-     inkscape:window-width="2512"
-     inkscape:window-height="1376"
-     id="namedview205"
-     showgrid="false"
-     inkscape:zoom="6.9117647"
-     inkscape:cx="70"
-     inkscape:cy="85"
-     inkscape:window-x="48"
-     inkscape:window-y="27"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="svg203" />
-  <title
-     id="title178">Cat</title>
-  <desc
-     id="desc180">一只猫</desc>
+  <title>Cat</title>
+  <desc>一只猫</desc>
   <!-- 画一个空心圆 -->
-  <circle
-     cx="70"
-     cy="95"
-     r="50"
-     style="stroke: black; fill:none"
-     id="circle182" />
-  <circle
-     cx="55"
-     cy="80"
-     r="5"
-     stroke="black"
-     fill="#339933"
-     id="circle184" />
-  <!--左眼，采用stroke和fill属性实现-->
-  <circle
-     cx="85"
-     cy="80"
-     r="5"
-     stroke="black"
-     fill="#339933"
-     id="circle186" />
-  <!--右眼，采用stroke和fill属性实现-->
-  <g
-     id="whiskers">
-    <line
-       x1="75"
-       y1="95"
-       x2="135"
-       y2="85"
-       stroke="black"
-       id="line188" />
-    <line
-       x1="75"
-       y1="95"
-       x2="135"
-       y2="105"
-       stroke="black"
-       id="line190" />
+  <circle cx="70" cy="95" r="50" style="stroke: black; fill:none" />
+  <circle cx="55" cy="80" r="5" stroke="black" fill="#339933" /> <!--左眼，采用stroke和fill属性实现-->
+  <circle cx="85" cy="80" r="5" stroke="black" fill="#339933" /> <!--右眼，采用stroke和fill属性实现-->
+  <g id="whiskers">
+    <line x1="75" y1="95" x2="135" y2="85" stroke="black"></line>
+    <line x1="75" y1="95" x2="135" y2="105" stroke="black"></line>
   </g>
-  <use
-     xlink:href="#whiskers"
-     transform="scale(-1 1) translate(-140 0)"
-     id="use193" />
+  <use xlink:href="#whiskers" transform="scale(-1 1) translate(-140 0)"></use>
   <!--耳朵-->
-  <polyline
-     points="108 62, 90 10, 70 45, 50 ,10, 32, 62"
-     stroke="black"
-     fill="none"
-     id="polyline195" />
+  <polyline points="108 62, 90 10, 70 45, 50 ,10, 32, 62" stroke="black" fill="none"></polyline>
   <!--嘴巴-->
-  <polyline
-     points="35 110, 45 120, 95 120, 105, 110"
-     stroke="black"
-     fill="none"
-     id="polyline197" />
+  <polyline points="35 110, 45 120, 95 120, 105, 110" stroke="black" fill="none"></polyline>
   <!--鼻子-->
-  <path
-     d="M 75 90 L 65 90 A 5 10 0 0 0 75 90"
-     stroke="black"
-     fill="#ffcccc"
-     id="path199" />
-  <text
-     x="50"
-     y="165"
-     style="font-family: monospace; font-size: 14pt"
-     stroke="none"
-     fill="red"
-     id="text201">小猫</text>
+  <path d="M 75 90 L 65 90 A 5 10 0 0 0 75 90" stroke="black" fill="#ffcccc"></path>
+  <text x="50" y="165" style="font-family: monospace; font-size: 14pt" stroke="none" fill="red">小猫</text>
+
 </svg>
