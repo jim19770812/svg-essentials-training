@@ -232,6 +232,7 @@
     <ul>
         <li>貌似必须得引入可以通过网络访问的图片，而当前目录下的图片是无法访问的</li>
         <li>可以用preserveAspectRatio属性解决显示和图像尺寸不一致的问题</li>
+        <li>和html的流式布局有区别，可以任意叠加</li>
     </ul>
 </div>
 </template>
