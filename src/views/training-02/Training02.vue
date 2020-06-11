@@ -45,6 +45,7 @@
         <li>SVG规范定义了一种嵌入foreign内容的方式插入其它（HTML，图片等）内容</li>
         <li>foreignObject 通过x,y,width,height属性来定义位置和大小，方式类似use或image元素</li>
         <li>foreignObject作为一个SVG元素，可以用坐标，变换和各种效果来控制，比如变形，动画等</li>
+        <li><strong>foreignObject可以实现文本自动换行</strong></li>
     </ul>
     <pre>
         &lt;foreignObject xmlns="内容类型"&gt;&lt;/foreignObject&gt; 元素定义了一个矩形区域，通过xmlns属性来定义其
@@ -54,21 +55,23 @@
             <g transform="skewX(25)">
                 <switch>
                     <!--选择第一个子元素-->
-                    <foreignObject x="1rem" y="25%" width="10rem" height="80%"
+                    <foreignObject x="1rem" y="10%" width="10rem" height="80%"
                                    requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
                         <body xmlns="http://www.w3.org/1999/xhtml">
                             <div>
-                                这段文字是内嵌在
-                                <p><strong class="big-size">SVG</strong></p>
+                                这段文字是内嵌在SVG
                                 中的信息，而且受到外部CSS样式影响
                             </div>
                         </body>
                     </foreignObject>
                     <text x="1rem" y="25%" dy="1rem">
-                        This SVG text won't wrap, so it will get cut off...
+                        这段文字不会显示，因为受到switch标签的影响，只显示第一个元素（foreignObject）
                     </text>
                 </switch>
             </g>
+            <foreignObject x="0.5rem" y="60%" width="12rem" height="5rem">
+                这段文字自动换行了，&lt;text&gt;标签是无法自动换行的
+            </foreignObject>
         </svg>
     </code>
     switch元素的主要作用和js的switch类似，实现在根据不同的条件显示不同元素，上面例子中会判断下面三个属性求值=true或属性缺失才会显示

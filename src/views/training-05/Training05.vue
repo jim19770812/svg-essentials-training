@@ -112,11 +112,11 @@
     <ul>
         <li>use元素主要是用来复用元素的（类似复制粘贴），在前面几章中已经有过应用</li>
         <li>use可以引用独立的元素也可以引用分组元素，但被引用的元素必须有全文档唯一的id</li>
-        <li>&lt;use xlink:href="#被引用的ID" x="新的x轴坐标" y="新的yz轴坐标"&gt;</li>
+        <li>&lt;use xlink:href="#被引用的ID" x="新的x轴坐标" y="新的y轴坐标"&gt;</li>
     </ul>
     <pre>
         &lt;svg width="300" height="100" viewBox="0 0 300 100" class="border"&gt;
-            &lt;rect id="src" x="20" y="20" width="100" height="40" style="stroke:black; fill:green"&gt;&lt;/rect&gt;
+            &lt;rect id="src" x="20" y="20" width="100" height="40" style="stroke:black; <strong>fill:green</strong>"&gt;&lt;/rect&gt;
             &lt;text x="30" y="45"&gt;源对象&lt;/text&gt;
             &lt;use id="tar" xlink:href="#src" <strong>x="130" y="0"</strong>&gt;&lt;/use&gt;
             &lt;text x="160" y="45"&gt;use后对象&lt;/text&gt;
@@ -132,7 +132,7 @@
     </code>
     <ul>
         <li>注意：复制后对象的x和y坐标的基准值是源对象，所以新对象的x,y都是相对位置，因此实际的坐标x=20+130=150, y=20+0=0</li>
-        <li><strong>另外源对象是绿色，目标对象改成了蓝色，但改不了</strong></li>
+        <li><strong>如果来源对象已经定义了某属性，则use后无法覆盖该属性（比如f上例的颜色就是就无法覆盖，第二个矩形理应是蓝色，就因为在来源对象已经定义了颜色，所以失效了）</strong></li>
     </ul>
     <h3>5.3.3 &lt;defs&gt;元素</h3>
     几个g和use的缺点
