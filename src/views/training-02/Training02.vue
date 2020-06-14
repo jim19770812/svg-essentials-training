@@ -31,13 +31,12 @@
         <li>与做为图像使用的方式不同，作为应用程序嵌入到html中的时候可以包含外部文件，同时脚本可以子啊对象和父页面进行通讯</li>
     </ul>
     <pre>
-        &lt;object data="../../assets/cat.svg" width="200" height="200" type="image/svg+xml"/&gt;
-        <strong>经过尝试，&lt;object&gt;无法使用svg，并且不同的浏览器错误的模式还不一样</strong>
-        &lt;embed src="../../assets/cat.svg" width="200" height="200" type="image/svg+xml"/&gt;
-        <strong>经过尝试，&lt;embed&gt;无法使用svg，并且不同的浏览器错误的模式还不一样</strong>
+        &lt;object data="/img/cat.svg" width="200" height="200" type="image/svg+xml"/&gt;
+        <strong>经过尝试，&lt;object&gt;和&lt;embed&gt;无法使用assets/下的资源，必须把svg放到public下才可以用</strong>
+        &lt;embed src="/img/cat.svg" width="200" height="200" type="image/svg+xml"/&gt;
     </pre>
-    <object data="../../assets/cat.svg" width="200" height="200" type="image/svg+xml"/>
-    <embed src="../../assets/cat.svg" width="200" height="200" type="image/svg+xml"/>
+    <object data="/img/cat.svg" width="200" height="200" type="image/svg+xml"/>
+    <embed src="/img/cat.svg" width="200" height="200" type="image/svg+xml"/>
     <h2>2.3 混合文档中的SVG标记</h2>
     SVG图片，SVG应用程序和包含HTML的SVG程序都是可以嵌入HTML的。需要注注意的是，嵌入到HTML中的SVG对象（可能包含了图像，html，文字，脚本等）会被做为一个整体视作一个对象
     <h3>2.3.1 SVG中的foreign object</h3>
@@ -69,7 +68,7 @@
                     </text>
                 </switch>
             </g>
-            <foreignObject x="0.5rem" y="60%" width="12rem" height="5rem">
+            <foreignObject x="20" y="120" width="180" height="100">
                 这段文字自动换行了，&lt;text&gt;标签是无法自动换行的
             </foreignObject>
         </svg>

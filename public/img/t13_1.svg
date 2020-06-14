@@ -1,0 +1,20 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN"
+        "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="400" height="30">
+    <style type="text/css">
+        <![CDATA[
+
+            a.words:hover, a.words:focus {
+                stroke: red;
+                text-decoration: none;
+                outline:none;
+                fill:none;
+            }
+        ]]>
+    </style>
+    <a class="words" xlink:href="cat.svg">
+        <text x="20" y="20">光标移入显示红字，点击可以查看小猫的SVG</text>
+    </a>
+</svg>
