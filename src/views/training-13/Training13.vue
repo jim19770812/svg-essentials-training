@@ -237,7 +237,7 @@
         <li>与HTML页面交互的关键点
             SVG内部要定义一个方法method2，在svg的初始化方法里 parent.method1=method2;
             <pre>
-                &lgt;svg ... onload="init(event)"&gt;
+                &lt;svg ... onload="init(event)"&gt;
                 function init(event){
                     <strong>//绑定外部事件</strong>
                     parent.method1 = function(color){
