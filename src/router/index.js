@@ -80,7 +80,6 @@ Vue.use(VueRouter)
       name: "training-15",
       component: Training15
     }
-
   ]
 
 const router = new VueRouter({

@@ -7,9 +7,10 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "@svgdotjs/svg.draggable.js": "^3.0.2",
+    "@svgdotjs/svg.js": "^3.0.16",
     "core-js": "^3.6.5",
     "reset.css": "^2.0.2",
-    "snapsvg": "^0.5.1",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
     "vuex": "^3.4.0"
