@@ -73,7 +73,7 @@
   pre{
     display: block;
     background: black;
-    color:gray;
+    color:white;
   }
 }
 
