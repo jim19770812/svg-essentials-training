@@ -14,11 +14,14 @@
         <li>SVG允许使用样式表，内联样式表，外部样式表，内部样式表都可以</li>
         <li>SVG使用样式表的方式和HTML规范一致</li>
         <li><strong>SVG中只有一部分CSS样式语法可以使用</strong></li>
+        <li>样式优先级高于属性，例如同时存在style="fill:blue" fill="red"，因为样式优先级高于属性，所以最终表现为blue</li>
+        <li>在use时样式的覆盖：use标签的样式优先级低于原始元素的属性，更低于原始元素的样式，即
+            <p><strong>原始元素样式 > 原始元素属性 > use元素的样式 > use元素的属性</strong></p></li>
     </ul>
     <h3>内部样式表和内联样式表的例子</h3>
     <pre>
     &lt;svg width="300" height="100" viewBox="0 0 300 100" class="border"&gt;
-        &lt;rect x="20" y="20" width="100" height="40" <strong>style="stroke:black; fill:green"</strong>&gt;&lt;/rect&gt;
+        &lt;rect x="20" y="20" width="100" height="40" <strong>fill="blue" style="stroke:black; fill:green"</strong>&gt;&lt;/rect&gt;
         &lt;text x="30" y="45"&gt;内联样式表&lt;/text&gt;
         &lt;rect x="150" y="20" width="100" height="40" <strong>class="c5_2_1"</strong>&gt;&lt;/rect&gt;
         &lt;text x="160" y="45"&gt;内部样式表&lt;/text&gt;
@@ -26,12 +29,13 @@
     </pre>
     <code>
         <svg width="300" height="100" viewBox="0 0 300 100" class="border">
-            <rect x="20" y="20" width="100" height="40" style="stroke:black; fill:green"></rect>
+            <rect x="20" y="20" width="100" height="40" fill="blue" style="stroke:black; fill:green"></rect>
             <text x="30" y="45">内联样式表</text>
             <rect x="150" y="20" width="100" height="40" class="c5_2_1"></rect>
             <text x="160" y="45">内部样式表</text>
         </svg>
     </code>
+    <strong>注意：上例中同时定义了了fill="blue"，style="fill:green"，因为样式优先级高所以最终呈现green</strong>
     <h3>外部样式表</h3>
     <ul>
         <li>由于SVG是XML，引入外部样式表需要使用XML语法</li>
@@ -124,16 +128,64 @@
     </pre>
     <code>
         <svg width="300" height="100" viewBox="0 0 300 100" class="border">
-            <rect id="src_5_3_2" x="20" y="20" width="100" height="40" style="stroke:black; fill:green"></rect>
+            <rect id="src_5_3_2" x="20" y="20" width="100" height="40"  style="stroke:black; fill:green"></rect>
             <text x="30" y="45">源对象</text>
-            <use id="tar_5_3_2" xlink:href="#src_5_3_2" x="130" y="0" style="fill: blue"></use>
+            <use xlink:href="#src_5_3_2" x="130" y="0" style="fill: blue"></use>
             <text x="160" y="45">use后对象</text>
         </svg>
     </code>
+    <strong>上例中#src_5_3_2已经定义了fill:green,在use中定义的fill:blue优先级较低，因此use后的矩形仍然是绿色</strong>
+    <pre>
+        &lt;svg width="300" height="100" viewBox="0 0 300 100" class="border"&gt;
+            &lt;rect id="src_5_3_2_1" x="20" y="20" width="100" height="40" <strong>style="stroke:black"</strong>&gt;&lt;/rect&gt;
+            &lt;text x="30" y="45"&gt;源对象&lt;/text&gt;
+            &lt;use xlink:href="#src_5_3_2_1" x="130" y="0" <strong>style="fill: blue"</strong>&gt;&lt;/use&gt;
+            &lt;text x="160" y="45"&gt;use后对象&lt;/text&gt;
+        &lt;/svg&gt;
+    </pre>
+    <code>
+        <svg width="300" height="100" viewBox="0 0 300 100" class="border">
+            <rect id="src_5_3_2_1" x="20" y="20" width="100" height="40" style="stroke:black"></rect>
+            <text x="30" y="45">源对象</text>
+            <use xlink:href="#src_5_3_2_1" x="130" y="0" style="fill: white"></use>
+            <text x="160" y="45">use后对象</text>
+        </svg>
+    </code>
+    <strong>上例中#src_5_3_2_1没有定义fill，所以显示成了黑色，在use时定义了fill:white，所以use的矩形是白色</strong>
     <ul>
         <li>注意：复制后对象的x和y坐标的基准值是源对象，所以新对象的x,y都是相对位置，因此实际的坐标x=20+130=150, y=20+0=0</li>
-        <li><strong>如果来源对象已经定义了某属性，则use后无法覆盖该属性（比如f上例的颜色就是就无法覆盖，第二个矩形理应是蓝色，就因为在来源对象已经定义了颜色，所以失效了）</strong></li>
     </ul>
+    <pre>
+        &lt;svg width="300" height="100" viewBox="0 0 300 100" class="border"&gt;
+            &lt;defs&gt;
+                <strong>//定义在defs里的内容都不显示</strong>
+                &lt;rect id="src_5_3_2_2" x="20" y="20" width="100" height="40" <strong>style="stroke:black"</strong>&gt;&lt;/rect&gt;
+                <strong>//没有指定填充色</strong>
+            &lt;/defs&gt;
+            &lt;use xlink:href="#src_5_3_2_2" x="0" y="0" <strong>style="fill: green"</strong>&gt;&lt;/use&gt;
+            &lt;text x="30" y="45"&gt;源对象&lt;/text&gt;
+            &lt;use xlink:href="#src_5_3_2_2" x="130" y="0" <strong>style="fill: white"</strong>&gt;&lt;/use&gt;
+            &lt;text x="160" y="45"&gt;use后对象&lt;/text&gt;
+        &lt;/svg&gt;
+    </pre>
+    <code>
+        <svg width="300" height="100" viewBox="0 0 300 100" class="border">
+            <defs>
+                <rect id="src_5_3_2_2" x="20" y="20" width="100" height="40" style="stroke:black"></rect>
+            </defs>
+            <use xlink:href="#src_5_3_2_2" x="0" y="0" style="fill: green"></use>
+            <text x="30" y="45">源对象</text>
+            <use xlink:href="#src_5_3_2_2" x="130" y="0" style="fill: white"></use>
+            <text x="160" y="45">use后对象</text>
+        </svg>
+    </code>
+    在上例中对例子src_5_3_2_1做了修改
+    <ul>
+        <li>首先用defs定义了rect #src_5_3_2_2，并且没有设置fill</li>
+        <li>因为defs元素的特性，里面定义的rect #src_5_3_2_2是不显示的</li>
+        <li>通过use标签把#src_5_3_2_2引用了两次，分别设置了颜色，因为在原始元素里没有定义填充色，所以use标签里定义的填充色的优先级更高，所以use标签最终正确的显示出了颜色</li>
+    </ul>
+    <strong>在上例中对例子做了修改，首先用defs定义了rect #src_5_3_2_2（并没有定义颜色，因为defs）</strong>
     <h3>5.3.3 &lt;defs&gt;元素</h3>
     几个g和use的缺点
     <ul>
@@ -231,7 +283,7 @@
     </code>
     <ul>
         <li>貌似必须得引入可以通过网络访问的图片，而当前目录下的图片是无法访问的</li>
-        <li>可以用preserveAspectRatio属性解决显示和图像尺寸不一致的问题</li>
+        <li>可以充分利用symbol提供的viewBox和preserveAspectRatio属性来缩放/拉伸图像</li>
         <li>和html的流式布局有区别，可以任意叠加</li>
     </ul>
 </div>

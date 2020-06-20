@@ -73,19 +73,21 @@
         <li>stroke-dasharray="1mm 10mm"：表示线长1毫米，间隔10毫米，不断循环</li>
     </ul>
     <pre>
-    &lt;svg width="500" height="120" class="border"&gt;
-        &lt;line x1="10" y1="20" x2="490" y2="20" stroke-width="4.5px" stroke="black"<strong>stroke-dasharray="1mm 10mm"</strong>&gt;&lt;/line&gt;
-        &lt;line x1="10" y1="50" x2="490" y2="50" stroke-width="4.5px" stroke="black"<strong>stroke-dasharray="10"</strong>&gt;&lt;/line&gt;
-        &lt;line x1="10" y1="80" x2="490" y2="80" stroke-width="4.5px" stroke="black"<strong>stroke-dasharray="10 3"</strong>&gt;&lt;/line&gt;
-        &lt;line x1="10" y1="110" x2="490" y2="110" stroke-width="4.5px" stroke="black"<strong>stroke-dasharray="5 3 10 3"</strong>&gt;&lt;/line&gt;
-    &lt;/svg&gt;
+        &lt;svg width="500" height="160" class="border"&gt;
+            &lt;line x1="10" y1="20" x2="490" y2="20" stroke-width="4.5px" stroke="black" <strong>stroke-dasharray="1mm 10mm"</strong>&gt;&lt;/line&gt;
+            &lt;line x1="10" y1="50" x2="490" y2="50" stroke-width="4.5px" stroke="black" <strong>stroke-dasharray="10"</strong>&gt;&lt;/line&gt;
+            &lt;line x1="10" y1="80" x2="490" y2="80" stroke-width="4.5px" stroke="black" <strong>stroke-dasharray="10 3"</strong>&gt;&lt;/line&gt;
+            &lt;line x1="10" y1="110" x2="490" y2="110" stroke-width="4.5px" stroke="black" <strong>stroke-dasharray="10 1"</strong>&gt;&lt;/line&gt;
+            &lt;line x1="10" y1="140" x2="490" y2="140" stroke-width="4.5px" stroke="black" <strong>stroke-dasharray="20 2"</strong>&gt;&lt;/line&gt;
+        &lt;/svg&gt;
     </pre>
     <code>
-        <svg width="500" height="120" class="border">
+        <svg width="500" height="160" class="border">
             <line x1="10" y1="20" x2="490" y2="20" stroke-width="4.5px" stroke="black" stroke-dasharray="1mm 10mm"></line>
             <line x1="10" y1="50" x2="490" y2="50" stroke-width="4.5px" stroke="black" stroke-dasharray="10"></line>
             <line x1="10" y1="80" x2="490" y2="80" stroke-width="4.5px" stroke="black" stroke-dasharray="10 3"></line>
-            <line x1="10" y1="110" x2="490" y2="110" stroke-width="4.5px" stroke="black" stroke-dasharray="5 3 10 3"></line>
+            <line x1="10" y1="110" x2="490" y2="110" stroke-width="4.5px" stroke="black" stroke-dasharray="10 1"></line>
+            <line x1="10" y1="140" x2="490" y2="140" stroke-width="4.5px" stroke="black" stroke-dasharray="20 2"></line>
         </svg>
     </code>
     <h2>4.3 矩形</h2>
@@ -236,6 +238,16 @@
         <li>线与的样式也是可以设置的</li>
         <li>&lt;line&gt;的stroke-linecap属性定义了线与线的接头样式</li>
     </ul>
+    <pre>
+        &lt;svg width="500" height="100" class="border"&gt;
+            &lt;line x1="30" y1="20" x2="170" y2="20" stroke-width="14.5px" stroke="black" <strong>stroke-linecap="butt"</strong>&gt;&lt;/line&gt;
+            &lt;text x="200" y="20"&gt;butt：精确对齐（默认值）&lt;/text&gt;
+            &lt;line x1="30" y1="50" x2="170" y2="50" stroke-width="14.5px" stroke="black" <strong>stroke-linecap="round"</strong>&gt;&lt;/line&gt;
+            &lt;text x="200" y="50"&gt;round：圆角样式，超出了基准位置&lt;/text&gt;
+            &lt;line x1="30" y1="80" x2="170" y2="80" stroke-width="14.5px" stroke="black" <strong>stroke-linecap="square"</strong>&gt;&lt;/line&gt;
+            &lt;text x="200" y="80"&gt;square：四方形样式，超出了基准位置&lt;/text&gt;
+        &lt;/svg&gt;
+    </pre>
     <code>
         <svg width="500" height="100" class="border">
             <line x1="30" y1="20" x2="170" y2="20" stroke-width="14.5px" stroke="black" stroke-linecap="butt"></line>
@@ -250,6 +262,16 @@
     <ul>
         <li>线连接样式可以设置线与线相交初的接头效果</li>
     </ul>
+    <pre>
+        &lt;svg width="400" height="100" class="border"&gt;
+            &lt;polyline points="30 30, 45 15, 60 30" stroke-width="14.5px" stroke="black" <strong>stroke-linejoin="miter"</strong>&gt;&lt;/polyline&gt;
+            &lt;text x="200" y="20"&gt;miter：尖锐&lt;/text&gt;
+            &lt;polyline points="90 30, 105 15, 120 30" stroke-width="14.5px" stroke="black" <strong>stroke-linejoin="round"</strong>&gt;&lt;/polyline&gt;
+            &lt;text x="200" y="50"&gt;round：圆角样式&lt;/text&gt;
+            &lt;polyline points="150 30, 165 15, 180 30" stroke-width="14.5px" stroke="black" <strong>stroke-linejoin="bevel"</strong>&gt;&lt;/polyline&gt;
+            &lt;text x="200" y="80"&gt;bevel：平的样式&lt;/text&gt;
+        &lt;/svg&gt;
+    </pre>
     <code>
         <svg width="400" height="100" class="border">
             <polyline points="30 30, 45 15, 60 30" stroke-width="14.5px" stroke="black" stroke-linejoin="miter"></polyline>
@@ -268,11 +290,20 @@
     <ul>
         <li>currentColor：元素的当前的color属性，一般是继承的</li>
     </ul>
+    <pre>
+        &lt;svg width="500" height="130" class="border"&gt;
+            &lt;line x1="10" y1="20" x2="490" y2="20" stroke-width="4.5px" <strong>stroke="blue"</strong>&gt;&lt;/line&gt;
+            &lt;line x1="10" y1="50" x2="490" y2="50" stroke-width="4.5px" <strong>stroke="rgba(200, 0, 200, 0.4)"</strong>&gt;&lt;/line&gt;
+            &lt;line x1="10" y1="80" x2="490" y2="80" stroke-width="4.5px" <strong>stroke="#0ef0cc"</strong>&gt;&lt;/line&gt;
+            &lt;line x1="10" y1="110" x2="490" y2="110" stroke-width="4.5px" <strong>stroke="currentColor"</strong>&gt;&lt;/line&gt;
+        &lt;/svg&gt;
+    </pre>
     <code>
-        <svg width="500" height="100" class="border">
+        <svg width="500" height="130" class="border">
             <line x1="10" y1="20" x2="490" y2="20" stroke-width="4.5px" stroke="blue"></line>
             <line x1="10" y1="50" x2="490" y2="50" stroke-width="4.5px" stroke="rgba(200, 0, 200, 0.4)"></line>
             <line x1="10" y1="80" x2="490" y2="80" stroke-width="4.5px" stroke="#0ef0cc"></line>
+            <line x1="10" y1="110" x2="490" y2="110" stroke-width="4.5px" stroke="currentColor"></line>
         </svg>
     </code>
     <h3>4.8.3 笔画和填充特性</h3>

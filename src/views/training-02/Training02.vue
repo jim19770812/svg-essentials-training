@@ -23,9 +23,25 @@
         <li>和图片一样，svg也受到background-size, background-repeat, background-position的影响</li>
         <li>SVG也可以用list-image, border-image来使用</li>
     </ul>
+    <pre>
+    @size:140px;
+    .c2_1_2{
+        display: block;
+        width: @size;
+        height: @size;
+      <strong>background-image: url(../../assets/cat.svg);</strong>
+        background-repeat: no-repeat;
+        background-size: @size @size;
+    }
+
+    ....
+
+    &lt;p class="c2_1_2"&gt;&lt;/p&gt;
+    </pre>
     <p class="c2_1_2"></p>
     <h2>2.2 将SVG作为应用程序</h2>
     <ul>
+        <li>SVG作为应用程序，和普通应用程序一样，可以包含脚本，图片，视频，文字甚至其它SVG，并且可以交互。一般来说，SVG可以实现和flash一样的功能，作为RIA的一种实现而存在</li>
         <li>&lt;object&gt;是嵌入到html的元素，可以嵌入多媒体和HTML，当然也可以嵌入SVG</li>
         <li>&lt;embed&gt;也可以实现和object相同效果，但注意，是用src属性而不是data</li>
         <li>与做为图像使用的方式不同，作为应用程序嵌入到html中的时候可以包含外部文件，同时脚本可以子啊对象和父页面进行通讯</li>
@@ -48,6 +64,32 @@
     </ul>
     <pre>
         &lt;foreignObject xmlns="内容类型"&gt;&lt;/foreignObject&gt; 元素定义了一个矩形区域，通过xmlns属性来定义其
+    </pre>
+    <pre>
+        &lt;svg width="200" height="200" class="border"&gt;
+            &lt;g transform="skewX(25)"&gt;
+                &lt;switch&gt;
+                    &lt;!--选择第一个子元素--&gt;
+                  <strong>&lt;foreignObject x="1rem" y="10%" width="10rem" height="80%"
+                                   requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"&gt;
+                        &lt;body xmlns="http://www.w3.org/1999/xhtml"&gt;
+                            &lt;div&gt;
+                                这段文字是内嵌在SVG
+                                中的信息，而且受到外部CSS样式影响
+                            &lt;/div&gt;
+                        &lt;/body&gt;
+                    &lt;/foreignObject&gt;</strong>
+                    &lt;text x="1rem" y="25%" dy="1rem"&gt;
+                        这段文字不会显示，因为受到switch标签的影响，只显示第一个元素（foreignObject）
+                    &lt;/text&gt;
+                &lt;/switch&gt;
+            &lt;/g&gt;
+        <strong>
+            &lt;foreignObject x="20" y="120" width="180" height="100"&gt;
+                这段文字自动换行了，&lt;text&gt;标签是无法自动换行的
+            &lt;/foreignObject&gt;
+        </strong>
+        &lt;/svg&gt;
     </pre>
     <code>
         <svg width="200" height="200" class="border">
@@ -82,7 +124,17 @@
     <h3>2.3.2 在XHTML或者HTML5中内嵌SVG</h3>
     非常简单，直接使用svg标签就可以，不仅如此，还可以用样式控制svg标签
     <pre>
-        &lt;svg class="c2_3_2"&gt;
+        .c2_3_2{
+            display: block;
+            width:200px;
+            height:200px;
+            background:gray;
+            color:blue;
+        }
+
+        ....
+
+        &lt;svg class=<strong>"c2_3_2"</strong>&gt;
             &lt;title&gt;一个圆&lt;/title&gt;
             &lt;circle cx="90" cy="80" r="70" stroke="white" fill="white"&gt;&lt;/circle&gt;
             &lt;text x="55" y="85"&gt;这是个圆&lt;/text&gt;
@@ -115,14 +167,6 @@
 <style lang="less" scoped>
 @import "../../common/styles/common.less";
 @size:140px;
-.c2_3_2{
-    display: block;
-    width:200px;
-    height:200px;
-    background:gray;
-    color:blue;
-
-}
 .c2_1_2{
     display: block;
     width: @size;
@@ -130,6 +174,14 @@
     background-image: url(../../assets/cat.svg);
     background-repeat: no-repeat;
     background-size: @size @size;
+}
+.c2_3_2{
+    display: block;
+    width:200px;
+    height:200px;
+    background:gray;
+    color:blue;
+
 }
 .big-size{
     font-size: 30px;

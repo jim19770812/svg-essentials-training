@@ -7,15 +7,19 @@
         <li>&lt;translate&gt;标签的主要作用是移动图形</li>
     </ul>
     <pre>
-    &lt;svg width="200px" height="200px" viewBox="0 0 200 200" class="border"&gt;
-        &lt;defs&gt;
-            &lt;symbol id="id6_1"&gt;
-                &lt;rect x="10" y="10" width="50" height="50" style="stroke: none"&gt;&lt;/rect&gt;
-            &lt;/symbol&gt;
-        &lt;/defs&gt;
-        &lt;use xlink:href="#id6_1" style="fill: #339933"&gt;&lt;/use&gt;
-        &lt;use xlink:href="#id6_1" x="50" y="50" fill="blue" <strong>transform="translate(50,50)"</strong>&gt;&lt;/use&gt;
-    &lt;/svg&gt;
+        &lt;svg width="200px" height="200px" viewBox="0 0 200 200" class="border"&gt;
+            &lt;defs&gt;
+                &lt;symbol id="id6_1"&gt;
+                    &lt;rect x="10" y="10" width="50" height="50" style="stroke: none"&gt;&lt;/rect&gt;
+                &lt;/symbol&gt;
+            &lt;/defs&gt;
+            <strong>//未定义x,y坐标，即使用#id6_1的(50,50)坐标</strong>
+            &lt;use xlink:href="#id6_1" style="fill: #339933"&gt;&lt;/use&gt;
+            <strong>//定义了x=50,y=50，所以要在原始坐标(50,50)上进一步位移，最终坐标为x=50+50, y=50+50</strong>
+            &lt;use xlink:href="#id6_1" x="50" y="50" fill="purple"&gt;&lt;/use&gt;
+        <strong>//定义了x=50,y=50，并且还定义了translate(50,50)，所以最终坐标为x=50+50+50, y=50+50+50</strong>
+            &lt;use xlink:href="#id6_1" x="50" y="50" fill="blue" <strong>transform="translate(50,50)"</strong>&gt;&lt;/use&gt;
+        &lt;/svg&gt;
     </pre>
     <code>
         <svg width="200px" height="200px" viewBox="0 0 200 200" class="border">
@@ -25,17 +29,18 @@
                 </symbol>
             </defs>
             <use xlink:href="#id6_1" style="fill: #339933"></use>
+            <use xlink:href="#id6_1" x="50" y="50" fill="purple"></use>
             <use xlink:href="#id6_1" x="50" y="50" fill="blue" transform="translate(50,50)"></use>
         </svg>
     </code>
-    <ul>
-        <li>如果没有这句translate(50,50)，蓝色方块应该会紧挨着绿色方块出现在右下角，因为有了translate，所以在原位置基础上x和y又偏移了50像素</li>
-    </ul>
     <h2>6.2 scale变换</h2>
     <ul>
         <li>scale是缩放坐标，让对象放大/缩小</li>
-        <li>scale(value)：放大value倍</li>
-        <li>scale(x-value, y-value)水平方向放大x-value倍，垂直方向放大y-value倍</li>
+        <li>以矩形为例，scale缩放的不只是width,height,也会缩放x,y，下面一节会讲如何围绕中心点缩放</li>
+        <li>scale(value)：水平方向和垂直方向都放大value倍（value可以是负数）</li>
+        <li>scale(xValue, yValue)：水平方向放大xValue倍，垂直方向放大yValue倍（xValue,yValue可以是负数）</li>
+        <li>scale(-1, 0)：水平翻转</li>
+        <li>scale(0, -1)：垂直翻转</li>
     </ul>
     <pre>
     &lt;svg width="450" height="450" viewBox="0 0 450 450" class="border"&gt;
@@ -67,7 +72,7 @@
     <ul>
         <li>上例中的缩放是围绕原点缩放的，导致x，y坐标也放大了，位置就变得很奇怪</li>
         <li>围绕图形的中心点缩放是比较符合人类认知的，中心点缩放需要组合translate和scale两个变换实现</li>
-        <li>计算公式
+        <li>translate位移计算公式
             <p>假设缩放倍数是F</p>
             <p>假设中心点坐标cX, cY</p>
             <ul>
@@ -198,7 +203,12 @@
         </svg>
     </code>
     <ul>
-        <li>上例中中心点的坐标cx = rect.x + rect.width/2, cy = rect.y + rect.height/2</li>
+        <li>上例中中心点的坐标计算公式
+            <ul>
+                <li>cx = rect.x + rect.width/2</li>
+                <li>cy = rect.y + rect.height/2</li>
+            </ul>
+        </li>
     </ul>
     <h2>6.7 skewX和skewY变换</h2>
     <ul>

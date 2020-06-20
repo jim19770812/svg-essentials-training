@@ -42,7 +42,7 @@
           &lt;copyright_url&gt;http://weather.gov/disclaimer.html&lt;/copyright_url&gt;
         &lt;/current_observation&gt;
     </pre>
-    从上图可以看出，高亮的weather.xsl就是转换整个数据文件的xslt，通过在xml头定义样式表来执行xslt转换
+    从上图可以看出，高亮的weather.xsl就是转换整个数据文件的xslt，通过在xml头定义样式表来执行xslt转换并不是一个好的解决方案
 </div>
 </template>
 

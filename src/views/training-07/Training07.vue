@@ -5,11 +5,11 @@
             <li>所有形状本质上都是路径&lt;path&gt;的简写形式</li>
             <li>所有描述轮廓的数据都在&lt;path d="xxxx"&gt;中的d属性里（data的缩写）</li>
             <li>命令和命令之间用空格或逗号间隔M 0 50 L 100 50 和 M 0 50<strong>,</strong>L 100 50 是等效的</li>
-            <li>d属性中包含了用大写单字符表示的命令
+            <li>d属性中包含了用单字符表示的命令
                 <ul>
-                    <li>M：绝对位置位移</li>
-                    <li>L：绝对位置画线</li>
+                    <li>M：绝对位置移动</li>
                     <li>m：相对位置移动</li>
+                    <li>L：绝对位置画线</li>
                     <li>l：相对位置画线</li>
                     <li>Z：关闭路径，注意：Z是无参数的，而且要出现在d属性表达式的最后</li>
                     <li>z：和Z等效</li>
@@ -65,10 +65,10 @@
         <h2>7.3 路径的快捷方式</h2>
         <h3>7.3.1 水平和垂直lineto命令</h3>
         <ul>
-            <li>H表示绝对水平lineto：H 20 等效与 L 20 current_y</li>
-            <li>h表示相对水平lineto：h 20 等效与 l 20 0</li>
-            <li>V表示绝对垂直lineto：V 20 等效与 L current_x 20</li>
-            <li>v表示绝对垂直lineto：v 20 等效与 v 0 20</li>
+            <li>H：绝对水平lineto：H 20 等效与 L 20 current_y</li>
+            <li>h：相对水平lineto：h 20 等效与 l 20 0</li>
+            <li>V：绝对垂直lineto：V 20 等效与 L current_x 20</li>
+            <li>v：绝对垂直lineto：v 20 等效与 v 0 20</li>
         </ul>
         <h3>7.3.2 路径快捷表示法</h3>
         <ul>
@@ -138,14 +138,14 @@
         <h2>7.6 贝塞尔曲线</h2>
         <ul>
             <li>绘制曲线从来都是不容易的</li>
-            <li>类似adobe photoshop画曲线的时候有个控制柄来调节曲线的弯度是个绘制区县的成熟解决方案</li>
+            <li>类似adobe photoshop画曲线的时候有个控制柄来调节曲线的弯度是个绘制曲线的成熟解决方案</li>
         </ul>
         <h2>7.6.1 二次贝塞尔曲线</h2>
         <ul>
-            <li>贝塞尔曲线需要 起点，终点和控制点，有了这三要素就可以绘制一条曲线</li>
-            <li>起点，终点和控制点之间形成两条切线</li>
-            <li>Q：生成一条绝对坐标的贝塞尔曲线，后面紧跟的是控制点坐标和终点坐标</li>
-            <li>q：生成一条相对坐标的贝塞尔曲线，后面紧跟的是控制点坐标和终点坐标</li>
+            <li>贝塞尔曲线需要 起点，终点和切线点(控制点)，有了这三要素就可以绘制一条曲线</li>
+            <li>起点，终点和切线点(控制点)之间形成两条切线</li>
+            <li>Q：生成一条绝对坐标的贝塞尔曲线，Q {切点坐标/控制点坐标} {终点坐标}</li>
+            <li>q：生成一条相对坐标的贝塞尔曲线</li>
         </ul>
         <pre>
         &lt;svg width="350" height="200" viewBox="0 0 350 200" class="border"&gt;
@@ -164,6 +164,13 @@
             <li>上图的蓝色线是控制线</li>
             <li>使用二次贝塞尔曲线还可以一次画出多条曲线</li>
         </ul>
+        <pre>
+        &lt;svg width="250" height="150" viewBox="0 0 250 150" class="border"&gt;
+            &lt;path <strong>d="M30 100 Q 80 30, 100 100, 130 65, 200 80"</strong> style="stroke: #2c3e50; fill: none"&gt;&lt;/path&gt;
+            &lt;line x1="30" y1="100" x2="80" y2="30" style="stroke: blue; fill: none"&gt;&lt;/line&gt;
+            &lt;line x1="100" y1="100" x2="130" y2="65" style="stroke: red; fill: none"&gt;&lt;/line&gt;
+        &lt;/svg&gt;
+        </pre>
         <code>
             <svg width="250" height="150" viewBox="0 0 250 150" class="border">
                 <path d="M30 100 Q 80 30, 100 100, 130 65, 200 80" style="stroke: #2c3e50; fill: none"></path>
@@ -173,11 +180,13 @@
         </code>
         <ul>
             <li>上图中蓝色线和红色线分别是两段曲线的控制线</li>
+            <li>第一条曲线：M 30 100 Q80 30, 100 100 起点：30,100 切线点：80,30，终点 100,100</li>
+            <li>第二条曲线：M 100 100 Q 130 65, 200 80，起点：100,100, 切线点：130,65, 终点：200,80</li>
         </ul>
         <h4>流畅二次曲线</h4>
         <ul>
             <li>流畅的二次曲线，弧形会漂亮很多</li>
-            <li>T：生成一条绝对坐标的流畅曲线</li>
+            <li>T：生成一条绝对坐标的流畅曲线，T {控制线/切线坐标} {终点坐标}</li>
             <li>t：生成一条相对坐标的流畅曲线</li>
         </ul>
         上面那两天曲线改用流畅二次曲线后变成下面的样子
@@ -198,10 +207,10 @@
         <h3>7.6.2 三次贝塞尔曲线</h3>
         <ul>
             <li>三次贝塞尔曲线有一个拐点，曲线从该点从一个方向向另一个方向弯曲</li>
-            <li>三次贝塞尔曲线有两条控制线在控制曲线</li>
+            <li>三次贝塞尔曲线有两条切线在控制曲线</li>
             <li>三次贝塞尔曲线也是比较常用的曲线</li>
-            <li>C：绝对坐标的三次贝塞尔曲线，后面紧跟3组坐标（起点控制点）（终点控制点）（断点）</li>
-            <li>c：相对坐标的三次贝塞尔曲线，后面紧跟3组坐标（起点控制点）（终点控制点）（断点）</li>
+            <li>C：绝对坐标的三次贝塞尔曲线，C {起点切点} {终点切点} {终点}</li>
+            <li>c：相对坐标的三次贝塞尔曲线</li>
         </ul>
         <pre>
         &lt;svg width="250" height="150" viewBox="0 0 250 150" class="border"&gt;
@@ -219,24 +228,67 @@
         </code>
         <ul>
             <li>两条蓝色线就是三次贝塞尔曲线的两条控制线</li>
-            <li>S：绝对坐标连接平滑指令，可以让多条曲线之间保证平滑</li>
-            <li>s：相对坐标连接平滑指令，可以让多条曲线之间保证平滑</li>
+            <li>S：绝对坐标平滑曲线指令，可以让多条曲线之间保证平滑，和T指令类似，S {控制线/切线坐标} {终点坐标}</li>
+            <li>s：相对坐标平滑曲线指令，可以让多条曲线之间保证平滑</li>
         </ul>
+        <pre>
+        &lt;svg width="250" height="150" viewBox="0 0 250 150" class="border"&gt;
+            &lt;path <strong>d="M30 100 S 80 30, 100 100, 130 65, 200 80"</strong> style="stroke: #2c3e50; fill: none"&gt;&lt;/path&gt;
+            &lt;line x1="30" y1="100" x2="80" y2="30" style="stroke: blue; fill: none"&gt;&lt;/line&gt;
+            &lt;line x1="100" y1="100" x2="130" y2="65" style="stroke: red; fill: none"&gt;&lt;/line&gt;
+        &lt;/svg&gt;
+        </pre>
+        <code>
+            <svg width="250" height="150" viewBox="0 0 250 150" class="border">
+                <path d="M30 100 S 80 30, 100 100, 130 65, 200 80" style="stroke: #2c3e50; fill: none"></path>
+                <line x1="30" y1="100" x2="80" y2="30" style="stroke: blue; fill: none"></line>
+                <line x1="100" y1="100" x2="130" y2="65" style="stroke: red; fill: none"></line>
+            </svg>
+        </code>
         <h2>7.7 路径总结</h2>
+        path的d属性中包含了用单字符表示的命令
+        <ul>
+            <li>M：绝对位置移动</li>
+            <li>m：相对位置移动</li>
+            <li>L：绝对位置画线，如果连续画线可以省略掉中间的L简写成 L x1 y1 x2 y2 x3 y3 ...</li>
+            <li>l：相对位置画线</li>
+            <li>Z：关闭路径，注意：Z是无参数的，而且要出现在d属性表达式的最后</li>
+            <li>z：和Z等效</li>
+            <li>H：绝对水平lineto：H 20 等效与 L 20 current_y</li>
+            <li>h：相对水平lineto：h 20 等效与 l 20 0</li>
+            <li>V：绝对垂直lineto：V 20 等效与 L current_x 20</li>
+            <li>v：绝对垂直lineto：v 20 等效与 v 0 20</li>
+            <li>A：绝对坐标圆弧，A {x轴的旋转角度} {0：圆弧角度小于180度，1：圆弧角度大于180度} {0：负角度绘制（逆时针方向），1：正角度绘制（顺时针方向）} {终点的x坐标} 终点的y坐标 </li>
+            <li>a：相对坐标圆弧</li>
+            <li>Q：生成一条绝对坐标的贝塞尔曲线，Q {控制线/切线坐标} {终点坐标}</li>
+            <li>q：生成一条相对坐标的贝塞尔曲线</li>
+            <li>T：生成一条绝对坐标的流畅贝塞尔曲线，T {控制线/切线坐标} {终点坐标}</li>
+            <li>t：生成一条相对坐标的流畅贝塞尔曲线</li>
+            <li>C：绝对坐标的三次贝塞尔曲线，C {起点切点} {终点切点} {终点}</li>
+            <li>c：相对坐标的三次贝塞尔曲线</li>
+            <li>S：绝对坐标平滑曲线指令，可以让多条曲线之间保证平滑，和T指令类似，S {控制线/切线坐标} {终点坐标}</li>
+            <li>s：相对坐标平滑曲线指令，可以让多条曲线之间保证平滑</li>
+        </ul>
+        注意事项
+        <ul>
+            <li>每个路径都应该以M命令开始</li>
+            <li>使用Z/z可以完美闭合线，放大后线和线的接头处不会有缺角</li>
+            <li>圆弧并不是以中心点为坐标绘制的，而是以旋转角度，圆弧角度，绘制方向和终点坐标绘制的，据说这样画矢量图起来更容易</li>
+        </ul>
         <h2>7.8 路径和填充</h2>
         <ul>
-            <li>注意回执图形时的方向，方向会影响fill-rule（nonzero/evenodd）策略的最终呈现效果</li>
+            <li>注意画图形时的方向，方向会影响fill-rule（nonzero/evenodd）策略的最终呈现效果，一般用默认的nonzreo就可以</li>
         </ul>
         <h2>7.9 &lt;marker&gt;元素</h2>
         <ul>
             <li>marker可以实现类似photoshop画曲线时，在线上点可以出现可以拖拽的小方块的效果</li>
-            <li>marker是用来标记路径的轨迹的，marker标签更象是个分组标签g，里面要放置具体的绘图元素，比如源泉，方块等</li>
+            <li>marker是用来标记路径的轨迹的，marker标签更象是个分组标签g，里面要放置具体的绘图元素，比如圆，方块等</li>
             <li>markerWidth：marker视窗的宽度</li>
             <li>markerHeight:marker视窗的高度</li>
             <li>orient：auto表示方向随着路径旋转</li>
             <li>refX：图形元素和marker连接处的x轴坐标，相当于x方向平移marker使之与图形元素对齐</li>
             <li>refY：图形元素和marker连接处的y轴坐标，相当于y方向平移marker使之与图形元素对齐</li>
-            <li>在path及path衍生的元素（远，矩形，线，椭圆等）可以设置marker出现的位置
+            <li>在path及path衍生的元素（圆，矩形，线，椭圆等）可以设置marker出现的位置
                 <ul>
                     <li>marker-start：起始处引用marker</li>
                     <li>marker-mid：中间引用marker</li>

@@ -206,10 +206,13 @@
         let draw = SVG().addTo('#svg145_1')
         let rect = draw.rect(100, 100).fill('#f06')
     </pre>
-    <button @click="btn145_1_click">145_1测试</button>
+    <button @click="btn145_1_click">点我会动态创建一个可以拖拽的矩形</button>
     <code>
-        <svg id="svg145_1">
-        </svg>
+        <div id="svg145_1">
+
+        </div>
+<!--        <svg id="" width="500" height="300" class="border">-->
+<!--        </svg>-->
     </code>
 </div>
 </template>

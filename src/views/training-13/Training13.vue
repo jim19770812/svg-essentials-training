@@ -11,15 +11,29 @@
             </ol>
         </li>
     </ul>
+    <pre>
+        &lt;svg width="300" height="150" class="border"&gt;
+            &lt;a href=<strong>"/img/cat.svg"</strong>&gt;
+                &lt;text x="20" y="20"&gt;查看小猫SVG&lt;/text&gt;
+            &lt;/a&gt;
+            &lt;a href=<strong>"http://www.baidu.com"</strong>&gt;
+                &lt;text x="20" y="50"&gt;打开百度&lt;/text&gt;
+            &lt;/a&gt;
+            &lt;a href=<strong>"http://www.sina.com.cn/"</strong> target="_self"&gt;
+                &lt;rect x="20" y="60" width="100" height="45" style="fill: #996699;"&gt;&lt;/rect&gt;
+                &lt;text x="35" y="90" font-size="16" stroke="white"&gt;打开新浪&lt;/text&gt;
+            &lt;/a&gt;
+        &lt;/svg&gt;
+    </pre>
     <code>
-        <svg width="300" height="300" viewBox="0 0 300 300" class="border">
-            <a xlink:href="/img/cat.svg">
+        <svg width="300" height="150" class="border">
+            <a href="/img/cat.svg">
                 <text x="20" y="20">查看小猫SVG</text>
             </a>
-            <a xlink:href="http://www.baidu.com">
+            <a href="http://www.baidu.com">
                 <text x="20" y="50">打开百度</text>
             </a>
-            <a xlink:href="http://www.sina.com.cn/" target="_self">
+            <a href="http://www.sina.com.cn/" target="_self">
                 <rect x="20" y="60" width="100" height="45" style="fill: #996699;"></rect>
                 <text x="35" y="90" font-size="16" stroke="white">打开新浪</text>
             </a>
@@ -27,7 +41,7 @@
     </code>
     注意事项
     <ul>
-        <li>在上例中&lt;a xlink:href ...&gt;所指向的图片，必须放到public下，也就是可以被浏览器直接访问才可以，vue的的assets目录的资源都是需要编译的，这种无法直接访问的不能用于 &lt;xlink:href &gt;</li>
+        <li>在上例中&lt;a href ...&gt;所指向的图片，必须放到public下，也就是可以被浏览器直接访问才可以，vue的的assets目录的资源都是需要编译的，这种无法直接访问的不能用于 &lt;href &gt;</li>
         <li>&lt;a&gt;也支持target属性，和html规范一样</li>
     </ul>
     <h3>使用CSS样式</h3>
@@ -40,7 +54,7 @@
         &lt;svg xmlns="http://www.w3.org/2000/svg"
              xmlns:xlink="http://www.w3.org/1999/xlink"
              width="400" height="30"&gt;
-            &lt;a<strong>class="words" xlink:href="cat.svg"</strong>&gt;
+            &lt;a<strong>class="words" href="cat.svg"</strong>&gt;
                 &lt;text x="20" y="20"&gt;光标移入显示红字，点击可以查看小猫的SVG&lt;/text&gt;
             &lt;/a&gt;
         &lt;/svg&gt;
@@ -58,7 +72,7 @@
         <svg xmlns="http://www.w3.org/2000/svg"
              xmlns:xlink="http://www.w3.org/1999/xlink"
              width="400" height="30">
-            <a class="words" xlink:href="cat.svg">
+            <a class="words" href="cat.svg">
                 <text x="20" y="20">光标移入显示红字，点击可以查看小猫的SVG</text>
             </a>
         </svg>
@@ -241,8 +255,8 @@
                 function init(event){
                     <strong>//绑定外部事件</strong>
                     parent.method1 = function(color){
-                    obj = document.getElementById("someId");
-                    obj.style.setProperty("fill", color, null);
+                        obj = document.getElementById("someId");
+                        obj.style.setProperty("fill", color, null);
                 }
             </pre>
             在HTML页面中

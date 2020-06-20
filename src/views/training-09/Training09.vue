@@ -179,13 +179,9 @@
     </ul>
     <pre>
         &lt;svg width="300" height="100" viewBox="0 0 300 100" class="border"&gt;
-            &lt;defs&gt;
-                &lt;path id="p98_1" d="M30 40 C50 10, 70 10, 120 30 S150 0, 260, 50" style="stroke-width: 1px; stroke: gray; fill: none"/&gt;
-            &lt;/defs&gt;
+            &lt;path id="p98_1" <strong>d="M30 40 C50 10, 70 10, 120 30 S150 0, 260, 50"</strong> style="stroke-width: 1px; stroke: gray; fill: none"/&gt;
             &lt;text&gt;
-                &lt;!-- <strong>不知为什么，曲线没有画出来</strong>--&gt;
-                &lt;use<strong>xlink:href="#p98_1"</strong>&gt;&lt;/use&gt;
-                &lt;textPath id="tp98_1"<strong>xlink:href="#p98_1"</strong>&gt;
+                &lt;textPath <strong>href="#p98_1"</strong>&gt;
                     这是一段使用了textPath特性的文字
                 &lt;/textPath&gt;
             &lt;/text&gt;
@@ -193,13 +189,9 @@
     </pre>
     <code>
         <svg width="300" height="100" viewBox="0 0 300 100" class="border">
-            <defs>
-                <path id="p98_1" d="M30 40 C50 10, 70 10, 120 30 S150 0, 260, 50" style="stroke-width: 1px; stroke: gray; fill: none"/>
-            </defs>
+            <path id="p98_1" d="M30 40 C50 10, 70 10, 120 30 S150 0, 260, 50" style="stroke-width: 1px; stroke: gray; fill: none"/>
             <text>
-                <!--不知为什么，曲线没有画出来-->
-                <use xlink:href="#p98_1"></use>
-                <textPath id="tp98_1" xlink:href="#p98_1">
+                <textPath href="#p98_1">
                     这是一段使用了textPath特性的文字
                 </textPath>
             </text>
@@ -226,6 +218,12 @@
         &lt;/svg&gt;
     </pre>
     <code>
+        <svg width="300" height="100" viewBox="0 0 300 100" class="border">
+            <text x="20" y="20">展示				对   xml:space对空白符处理的
+
+
+                文字</text>
+        </svg>
         <svg width="300" height="100" viewBox="0 0 300 100" class="border">
             <text x="20" y="20">展示				对   xml:space对空白符处理的
 
